@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 08:52 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Waktu pembuatan: 18 Sep 2023 pada 12.25
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -40,7 +52,7 @@ CREATE TABLE `personal_access_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `personal_access_tokens`
+-- Dumping data untuk tabel `personal_access_tokens`
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
@@ -79,7 +91,7 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_categories`
+-- Struktur dari tabel `tb_categories`
 --
 
 CREATE TABLE `tb_categories` (
@@ -92,7 +104,7 @@ CREATE TABLE `tb_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_categories`
+-- Dumping data untuk tabel `tb_categories`
 --
 
 INSERT INTO `tb_categories` (`cid`, `name`, `alias`, `desc`, `image`, `active`) VALUES
@@ -101,7 +113,7 @@ INSERT INTO `tb_categories` (`cid`, `name`, `alias`, `desc`, `image`, `active`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_comments`
+-- Struktur dari tabel `tb_comments`
 --
 
 CREATE TABLE `tb_comments` (
@@ -113,7 +125,7 @@ CREATE TABLE `tb_comments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_comments`
+-- Dumping data untuk tabel `tb_comments`
 --
 
 INSERT INTO `tb_comments` (`commentID`, `pageID`, `userID`, `comments`, `posted`) VALUES
@@ -126,7 +138,7 @@ INSERT INTO `tb_comments` (`commentID`, `pageID`, `userID`, `comments`, `posted`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_data_set`
+-- Struktur dari tabel `tb_data_set`
 --
 
 CREATE TABLE `tb_data_set` (
@@ -143,7 +155,7 @@ CREATE TABLE `tb_data_set` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_data_set`
+-- Dumping data untuk tabel `tb_data_set`
 --
 
 INSERT INTO `tb_data_set` (`id`, `jumlah_pinjaman`, `usia`, `gaji_pokok`, `status_perkawinan`, `lama_bekerja`, `jaminan`, `limit_pinjaman`, `jangka_waktu`, `status`) VALUES
@@ -151,13 +163,13 @@ INSERT INTO `tb_data_set` (`id`, `jumlah_pinjaman`, `usia`, `gaji_pokok`, `statu
 (2, '1000000', '29', 9200000, 'Belum Menikah', '2', 'kartu karyawan', 9200000, 6, 'Disetujui'),
 (3, '5000000', '45', 10000000, 'Menikah', '1', 'BPKB Mobil', 30000000, 10, 'Tidak Disetujui'),
 (4, '21000000', '45', 10000000, 'Menikah', '20', 'BPKB Mobil', 30000000, 15, 'Disetujui'),
-(5, '15000000', '43', 15000000, 'Menikah', '96', NULL, 0, 10, 'Disetujui'),
-(6, '5000000', '45', 10000000, 'Menikah', '20', 'BPKB Motor', 8000000, 15, 'Disetujui');
+(6, '5000000', '45', 10000000, 'Menikah', '20', 'BPKB Motor', 8000000, 15, 'Disetujui'),
+(7, '50000000', '45', 10000000, 'Menikah', '20', 'BPKB Motor', 8000000, 15, 'Disetujui');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_finance`
+-- Struktur dari tabel `tb_finance`
 --
 
 CREATE TABLE `tb_finance` (
@@ -169,16 +181,18 @@ CREATE TABLE `tb_finance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_finance`
+-- Dumping data untuk tabel `tb_finance`
 --
 
 INSERT INTO `tb_finance` (`id`, `nama`, `email`, `username`, `password`) VALUES
-(1, 'Finance 1', 'finance@mail.com', 'finance', 'finance');
+(1, 'Finance 1', 'finance@mail.com', 'finance', 'finance'),
+(3, 'malasari', 'malas@mail.com', 'finance_kuningan', '123456'),
+(4, 'Diki', 'diki@mail.com', 'diki_finance Tambun', '123456');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_forms`
+-- Struktur dari tabel `tb_forms`
 --
 
 CREATE TABLE `tb_forms` (
@@ -194,7 +208,7 @@ CREATE TABLE `tb_forms` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_forms`
+-- Dumping data untuk tabel `tb_forms`
 --
 
 INSERT INTO `tb_forms` (`formID`, `name`, `method`, `tablename`, `email`, `configuration`, `success`, `failed`, `redirect`) VALUES
@@ -203,7 +217,7 @@ INSERT INTO `tb_forms` (`formID`, `name`, `method`, `tablename`, `email`, `confi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_groups`
+-- Struktur dari tabel `tb_groups`
 --
 
 CREATE TABLE `tb_groups` (
@@ -214,7 +228,7 @@ CREATE TABLE `tb_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_groups`
+-- Dumping data untuk tabel `tb_groups`
 --
 
 INSERT INTO `tb_groups` (`group_id`, `name`, `description`, `level`) VALUES
@@ -227,7 +241,7 @@ INSERT INTO `tb_groups` (`group_id`, `name`, `description`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_groups_access`
+-- Struktur dari tabel `tb_groups_access`
 --
 
 CREATE TABLE `tb_groups_access` (
@@ -238,7 +252,7 @@ CREATE TABLE `tb_groups_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_groups_access`
+-- Dumping data untuk tabel `tb_groups_access`
 --
 
 INSERT INTO `tb_groups_access` (`id`, `group_id`, `module_id`, `access_data`) VALUES
@@ -311,7 +325,7 @@ INSERT INTO `tb_groups_access` (`id`, `group_id`, `module_id`, `access_data`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_karyawan`
+-- Struktur dari tabel `tb_karyawan`
 --
 
 CREATE TABLE `tb_karyawan` (
@@ -322,7 +336,6 @@ CREATE TABLE `tb_karyawan` (
   `alamat` varchar(45) DEFAULT NULL,
   `no_tlpn` varchar(45) DEFAULT NULL,
   `status_pernikahan` varchar(45) DEFAULT NULL,
-  `jenis_jaminan` varchar(45) DEFAULT NULL,
   `departement` varchar(45) DEFAULT NULL,
   `jabatan` varchar(45) DEFAULT NULL,
   `tgl_bergabung` date DEFAULT NULL,
@@ -330,21 +343,107 @@ CREATE TABLE `tb_karyawan` (
   `status_karyawan` varchar(45) DEFAULT NULL,
   `gaji_pokok` int(22) DEFAULT NULL,
   `no_rekening` varchar(45) DEFAULT NULL,
-  `ktp` varchar(45) DEFAULT NULL
+  `ktp` varchar(45) DEFAULT NULL,
+  `jk` varchar(2) NOT NULL,
+  `jumlah_gaji` int(22) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_karyawan`
+-- Dumping data untuk tabel `tb_karyawan`
 --
 
-INSERT INTO `tb_karyawan` (`id`, `nama_karawan`, `tgl_lahir`, `usia`, `alamat`, `no_tlpn`, `status_pernikahan`, `jenis_jaminan`, `departement`, `jabatan`, `tgl_bergabung`, `lama_bekerja`, `status_karyawan`, `gaji_pokok`, `no_rekening`, `ktp`) VALUES
-(1, 'Dedi Haryanto', '1978-09-10', 45, 'Tangerang Selatan', '088787878', 'Menikah', 'BPKB Mobil', 'Marketing', 'staff', '2022-01-01', 1, 'Tetap', 10000000, '7788589', NULL),
-(2, 'Bambang', '1980-09-16', 43, 'Tangerang', '0888748784', 'Menikah', NULL, 'Sales', 'Manager Sales', '2015-09-01', 8, 'Tetap', 15000000, '778854', '77885487848');
+INSERT INTO `tb_karyawan` (`id`, `nama_karawan`, `tgl_lahir`, `usia`, `alamat`, `no_tlpn`, `status_pernikahan`, `departement`, `jabatan`, `tgl_bergabung`, `lama_bekerja`, `status_karyawan`, `gaji_pokok`, `no_rekening`, `ktp`, `jk`, `jumlah_gaji`) VALUES
+(1, 'Dedi Haryanto', '1975-09-10', 48, 'Tangerang Selatan', '088787878', 'Menikah', 'Marketing', 'staff', '2022-01-01', 1, 'Tetap', 10000000, '7788589', '1', 'L', 0),
+(2, 'Bambang', '1980-09-16', 43, 'Tangerang', '0888748784', 'Menikah', 'Sales', 'Manager Sales', '2015-09-01', 8, 'Tetap', 15000000, '778854', '77885487848', 'L', 0),
+(3, 'Ridwan', '1996-11-15', 26, 'The Joglo Garden', '087887167465', 'Menikah', 'Resto', 'Kasir', '2023-09-14', 25, 'Tetap', 5000000, '8975454212', '02546464481', 'L', 0),
+(4, 'RIYANTO', '1994-02-16', 25, 'Srengseng Sawah NO.10 RT/RW 004/005 Kel. Sren', '1', 'Menikah', 'RESTO', 'MANAGER OPERATIONAL', '2021-01-27', 2, 'Staff', 15200000, '167-00-0213 382-2', '1', 'L', 15200000),
+(5, 'RA. VIVIN VEBRIANTI', '1994-02-17', 25, 'Srengseng Sawah NO.10 RT/RW 004/005 Kel. Sren', '1', 'Belum Menikah', 'RESTO', 'HRD/BUDGETING', '2021-01-27', 2, 'Staff', 12200000, '167-00-0213 382-1', '1', 'P', 12200000),
+(6, 'KUSNUL MARDIASTUTI', '1984-04-05', 25, 'Jl. Anggrek 17 No.25 Prum Kranggan Permai ', '1', 'Menikah', 'RESTO', 'SUPERVISOR/SALES MARKETING', '2020-12-02', 2, 'Staff', 9200000, '167-00-0213 382-0', '1', 'P', 9200000),
+(7, 'NOVY DAMAYANTI', '1991-11-23', 25, 'Jl. Kp.Sengon RT/RW 009/010 Kel.Pancoran Mas ', '89530524874', 'Belum Menikah', 'RESTO', 'ACCOUNTING', '2021-03-23', 2, 'Staff', 8900000, '167-00-0213 382-1', '1', 'P', 8900000),
+(8, 'MUHAMMAD RIDWANSYAH', '1996-11-15', 25, 'Prum BSI 2 Block E.3 NO. 40 RT 011/10 KEL. Pe', '87887167465', 'Menikah', 'RESTO', 'ADMIN ', '2020-12-02', 2, 'Staff', 5900000, '167-00-0213 382-2', '1', 'L', 5900000),
+(9, 'ELLA SEPTIANA', '1994-09-17', 25, 'Jl. Taman Pondok Gede RT 005/001 No. 56 KEL. ', '895336206000', 'Belum Menikah', 'RESTO', 'STORE KEEPER', '2020-12-02', 2, 'Staff', 5600000, '167-00-0213 382-3', '1', 'P', 5600000),
+(10, 'RATNA SARI', '1991-05-08', 51, 'Jl. Pertamina B RT 08/07 No.19 KEL.Jatiraden ', '87788782066', 'Menikah', 'RESTO', 'CASHIER', '2020-12-02', 2, 'Staff', 5300000, '167-00-0213 382-4', '1', 'P', 5300000),
+(11, 'MUHAMAD RIZKY HIDAYAH', '1995-12-13', 51, 'Jl. Kp.Rawadas RT 008/003 KEL. Pondok Kopi KE', '1', 'Belum Menikah', 'RESTO', 'BEVERAGE STAFF', '2020-12-02', 2, 'Staff', 5000000, '167-00-0213 382-5', '1', 'L', 5000000),
+(12, 'REZA PARIZIA TAIS', '1996-03-08', 51, 'BLOK DESA RT 001/001  KEL. Kareo KEC. Banjara', '1', 'Menikah', 'RESTO', 'BEVERAGE STAFF JUNIOR', '2020-12-02', 2, 'Staff', 4700000, '167-00-0213 382-6', '1', 'L', 4700000),
+(13, 'IRFAN M B JAIN', '1997-07-29', 51, 'KP. Raden RT/RW 005/001 Jatiranggon Kec Jatis', '1', 'Belum Menikah', 'RESTO', 'BEVERAGE STAFF JUNIOR', '2021-11-26', 1, 'Staff', 4400000, '167-00-0213 382-7', '1', 'L', 4400000),
+(14, 'PURI LESTARI', '2001-01-09', 51, 'Jl. H.Limin No.12 RT 01/001 KEL. Jatilhur Kec', '89671287429', 'Menikah', 'RESTO', 'WAITER/WAITRESS', '2020-12-18', 2, 'Staff', 2450000, '166-00-0321 851-8', '1', 'P', 2450000),
+(15, 'LIA YUSTIKASARI', '2001-06-04', 28, 'Dusun Cibeber Wetan RT 004/001 KEL.Cintajaya ', '81214132473', 'Belum Menikah', 'RESTO', 'WAITER/WAITRESS', '2021-01-11', 2, 'Staff', 2450000, '166-00-0321 851-9', '1', 'P', 2450000),
+(16, 'ENDANG SAFITRI', '2001-11-17', 28, 'Dusun Babakan Sukamarah No. 07 RT 01/02 PS. C', '1', 'Menikah', 'RESTO', 'WAITER/WAITRESS', '2021-01-05', 2, 'Staff', 2450000, '166-00-0321 851-10', '1', 'P', 2450000),
+(17, 'ILHAMI QALBU AINUDIN', '2005-09-07', 28, 'KP. Raden RT/RW 005/001 Jatiranggon Kec Jatis', '1', 'Belum Menikah', 'RESTO', 'WAITER/WAITRESS', '2021-05-31', 2, 'Staff', 2450000, '166-00-0321 851-11', '1', 'L', 2450000),
+(18, 'REYNANDIAS PRADIFTA', '2004-03-06', 28, 'KP. Raden GG Ridho RT/RW 004/001 JatiRanggon ', '1', 'Menikah', 'RESTO', 'WAITER/WAITRESS', '2021-08-18', 2, 'Staff', 2450000, '166-00-0321 851-12', '1', 'L', 2450000),
+(19, 'MAYDIFA', '2003-12-29', 48, 'Jl. Slamet riady lrg.kemas II no.472 RT/RW 00', '1', 'Belum Menikah', 'RESTO', 'WAITER/WAITRESS', '2021-12-26', 1, 'Staff', 2450000, '166-00-0321 851-13', '1', 'P', 2450000),
+(20, 'BASIR ROBIN', '1967-03-05', 49, 'Prum BSI 2 Block D3A No. 52 KEL. Pengasinan K', '81219991867', 'Menikah', 'RESTO', 'HEAD CHEF', '2020-12-02', 2, 'Staff', 5640000, '166-00-032 111-8', '1', 'L', 5640000),
+(21, 'DANA RUDIANTO', '1980-06-15', 48, 'BLOCK GEMBUL RT 003/001 KEL.Pangkalanpari KEC', '81281496053', 'Belum Menikah', 'RESTO', 'AST CHEF', '2021-01-05', 2, 'Staff', 5000000, '166-00-0320 157-1', '1', 'L', 5000000),
+(22, 'DONI SUSANTO', '1995-09-16', 48, 'Block Galang RT 005/005 KEL. Jonggol KEC. Jon', '85885523618', 'Menikah', 'RESTO', 'COOK', '2020-12-02', 2, 'Staff', 4000000, '166-00-0320 123-3', '1', 'L', 4000000),
+(23, 'AGUNG JAMALUDIN', '2003-02-10', 30, 'BLOK CILOMBANG RT 006/003 KEL.Kareo KEC. Banj', '1', 'Belum Menikah', 'RESTO', 'COOK', '2020-12-25', 2, 'Staff', 3700000, '166-00-0320 267-8', '1', 'L', 3700000),
+(24, 'VERI ASHARI', '1996-06-16', 30, 'KP. Ranto RT 004/012 KEC.Cikatomas KEB. Tasik', '1', 'Menikah', 'RESTO', 'COOK', '2021-01-05', 2, 'Staff', 3400000, '166-00-0320 260-3', '1', 'L', 3400000),
+(25, 'YOGA BUDIMAN', '1992-11-09', 30, 'BLOK LADEUH RT 004/002 KEL.Panyindangan', '85215188899', 'Belum Menikah', 'RESTO', 'COOK HELPER', '2021-01-04', 2, 'Staff', 3100000, '166-00-0320 273-6', '1', 'L', 3100000),
+(26, 'LUTHFI FAOZI AKBAR', '1995-07-16', 30, 'Blok Sidajaya RT/RW 009/004 Kel. Kutamanggu K', '1', 'Menikah', 'RESTO', 'COOK HELPER', '2021-04-04', 2, 'Staff', 2800000, '166-00-0320 267-9', '1', 'L', 2800000),
+(27, 'GALIH PURNAMA', '2003-09-11', 30, 'BLOK CILOMBANG RT 006/003 KEL.Kareo KEC. Banj', '1', 'Belum Menikah', 'RESTO', 'STEWARD', '2021-05-31', 2, 'Staff', 2500000, '166-00-0320 260-4', '1', 'L', 2500000),
+(28, 'ANDI SOLEHUDIN', '2001-12-30', 30, 'Blok Desa RT/RW 001/001 kel Kareo Kec Banjara', '1', 'Menikah', 'RESTO', 'STEWARD', '2021-06-17', 2, 'Staff', 2200000, '166-00-0320 273-7', '1', 'L', 2200000),
+(29, 'M. SYAEFUDIN', '1992-10-22', 30, 'Dusun Mayasari RT/RW 002/004 Kel. Ligung Lor ', '1', 'Belum Menikah', 'RESTO', 'COOK', '2022-01-09', 1, 'Staff', 1900000, '166-00-0320 267-10', '1', 'L', 1900000),
+(30, 'DEDE ENGKOS', '2003-06-09', 30, 'Dusun SukaManah RT/RW 001/007 Desa Babakan Ke', '1', 'Menikah', 'RESTO', 'COOK HELPER', '2021-12-12', 1, 'Staff', 1600000, '166-00-0320 260-5', '1', 'L', 1600000),
+(31, 'GUNUNG MULIA SAKTI ', '2003-10-01', 30, 'Prum BSI 2 Block D3A No. 52 KEL. Pengasinan K', '1', 'Belum Menikah', 'RESTO', 'COOK HELPER', '2021-12-07', 1, 'Staff', 1300000, '166-00-0320 273-8', '1', 'L', 1300000),
+(32, 'RUDIANA', '1995-10-10', 30, 'KP. Rade Jl.Senopati RT/RW 001/003 Jatiraden ', '1', 'Menikah', 'RESTO', 'HOUSE KEEPING', '2021-08-26', 2, 'Staff', 1000000, '166-00-0320 267-11', '1', 'L', 1000000),
+(33, 'SUHADI', '1990-03-07', 30, 'Desa Jatiresa RT 03/03 KEC. Compreng Subang K', '1', 'Belum Menikah', 'RESTO', 'GARDENER', '2020-12-02', 2, 'Staff', 3000000, '166-00-0320 260-6', '1', 'L', 3000000),
+(34, 'OMO', '1983-11-25', 30, 'Perum Kranggan Permai Jl Cempaka 8 No.29 RT/R', '1', 'Menikah', 'RESTO', 'HOUSE KEEPING', '2021-05-01', 2, 'Staff', 3000000, '166-00-0320 273-9', '1', 'L', 3000000),
+(35, 'TRI SUMARDI', '1979-11-25', 30, 'Jl. Pringgondani II kalimanggis RT/RW 005/009', '1', 'Belum Menikah', 'RESTO', 'MAINTENANCE', '2020-12-02', 2, 'Staff', 3000000, '166-00-0320 267-12', '1', 'L', 3000000),
+(36, 'KARDIAT BIN MURDI', '1964-05-21', 30, 'KP.Kambing Kel. Karang Asam Barat', '8770048380', 'Menikah', 'RESTO', 'MAINTENANCE', '2020-12-17', 2, 'Staff', 3000000, '166-00-0321 771-8', '1', 'L', 3000000),
+(37, 'MUHAMAD SULTAN HAJI MULTAZAM', '2004-01-20', 30, 'Mampang RT/RW 003/004 Kel Mampang Kec. Pancor', '1', 'Belum Menikah', 'RESTO', 'MAINTENANCE', '2021-06-26', 2, 'Staff', 3000000, '166-00-0320 273-9', '1', 'L', 3000000),
+(38, 'SILVIANUS', '1968-03-29', 30, 'Lingk. Cipayung RT/RW 001/001 Abadijaya Kec. ', '1', 'Menikah', 'RESTO', 'SECURITY', '2020-12-02', 2, 'Staff', 3000000, '166-00-0320 267-12', '1', 'L', 3000000),
+(39, 'M JAKARIA', '1985-10-22', 30, 'Dusun IV RT/RW 012/004 Kel. Nibung Kec. Gunun', '1', 'Belum Menikah', 'RESTO', 'SECURITY', '2021-06-01', 2, 'Staff', 3000000, '166-00-0320 260-7', '1', 'L', 3000000),
+(40, 'SANUSI', '1971-09-01', 30, 'Dusun 04 RT/RW 019/004 Kel. Jalaksana Kec Jal', '1', 'Menikah', 'RESTO', 'HOUSE KEEPING', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 273-10', '1', 'L', 3000000),
+(41, 'ELAN JAELANI', '1966-12-10', 30, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Belum Menikah', 'RESTO', 'HOUSE KEEPING', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 267-13', '1', 'L', 3000000),
+(42, 'REZA FALEVI', '2000-10-08', 30, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Menikah', 'RESTO', 'HOUSE KEEPING', '2021-12-23', 1, 'Staff', 3000000, '166-00-0321 771-9', '1', 'L', 3000000),
+(43, 'CHAESER RAHADHAN', '2004-11-07', 30, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Belum Menikah', 'RESTO', 'MANAGER OPERATIONAL', '2022-05-04', 1, 'Staff', 3000000, '166-00-0320 273-10', '1', 'L', 3000000),
+(44, 'MUHAMMAD ARYA ARAFAH', '1998-03-25', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'CAFFE', 'HRD/BUDGETING', '2021-06-01', 2, 'Staff', 3000000, '166-00-0320 267-13', '1', 'L', 3000000),
+(45, 'ALIEFFIA ASHARI SANTI', '1998-03-26', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Belum Menikah', 'CAFFE', 'SUPERVISOR/SALES MARKETING', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 260-8', '1', 'P', 3000000),
+(46, 'INTAN PERMATASARI', '1998-03-27', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Menikah', 'CAFFE', 'ACCOUNTING', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 273-11', '1', 'P', 3000000),
+(47, 'GIBRAN TRIWIBOWO', '1998-03-28', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Belum Menikah', 'CAFFE', 'ADMIN ', '2021-12-23', 1, 'Staff', 3000000, '166-00-0320 267-14', '1', 'L', 3000000),
+(48, 'TITI SUARNI GULO', '1998-03-29', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'CAFFE', 'STORE KEEPER', '2022-05-04', 1, 'Staff', 3000000, '166-00-0321 771-10', '1', 'L', 3000000),
+(49, 'ATHAR', '1998-03-30', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Belum Menikah', 'CAFFE', 'CASHIER', '2021-06-01', 2, 'Staff', 3000000, '166-00-0320 273-11', '1', 'L', 3000000),
+(50, 'TOMMY HARDLY', '1998-03-31', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Menikah', 'WAHANA', 'BEVERAGE STAFF', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 267-14', '1', 'L', 3000000),
+(51, 'ANDRIYANTO SUMAH', '1998-04-01', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Belum Menikah', 'WAHANA', 'BEVERAGE STAFF JUNIOR', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 260-9', '1', 'L', 3000000),
+(52, 'SUMARNA', '1998-04-02', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'WAHANA', 'BEVERAGE STAFF JUNIOR', '2021-12-23', 1, 'Staff', 3000000, '166-00-0320 273-12', '1', 'L', 3000000),
+(53, 'DIDI MULYANA', '1972-06-18', 0, 'KP Sukarame RT/RW 004/002 Kel Langensari Kec ', '1', 'Belum Menikah', 'WAHANA', 'WAITER/WAITRESS', '2022-05-04', 1, 'Staff', 3000000, '166-00-0320 267-15', '1', 'L', 3000000),
+(54, 'AWAN', '1972-06-19', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Menikah', 'WAHANA', 'WAITER/WAITRESS', '2021-06-01', 2, 'Staff', 3000000, '166-00-0321 771-11', '1', 'L', 3000000),
+(55, 'NANA', '1972-06-20', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Belum Menikah', 'WAHANA', 'WAITER/WAITRESS', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 273-12', '1', 'L', 3000000),
+(56, 'ARIF', '1972-06-21', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Menikah', 'WAHANA', 'WAITER/WAITRESS', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 267-15', '1', 'L', 3000000),
+(57, 'M. REZA PRATAMA', '1972-06-22', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Belum Menikah', 'WAHANA', 'WAITER/WAITRESS', '2021-12-23', 1, 'Staff', 3000000, '166-00-0320 260-10', '1', 'L', 3000000),
+(58, 'MOH. PAUJI RAHMAN', '1994-12-19', 0, 'Block Desa RT/RW 002/001 Kel. Kareo Kec Banja', '1', 'Menikah', 'WAHANA', 'WAITER/WAITRESS', '2022-05-04', 1, 'Staff', 3000000, '166-00-0320 273-13', '1', 'L', 3000000),
+(59, 'KARMAT', '1994-12-20', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Belum Menikah', 'WAHANA', 'HEAD CHEF', '2021-06-01', 2, 'Staff', 3000000, '166-00-0320 267-16', '1', 'L', 3000000),
+(60, 'RAGIL', '1994-12-21', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Menikah', 'WAHANA', 'AST CHEF', '2022-01-01', 1, 'Staff', 3000000, '166-00-0321 771-12', '1', 'L', 3000000),
+(61, 'RAMA MAULANA AKBAR', '1994-12-22', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Belum Menikah', 'WAHANA', 'COOK', '2022-01-01', 1, 'Staff', 3000000, '166-00-0320 273-13', '1', 'L', 3000000),
+(62, 'KETTY APRIANTI', '1975-04-20', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'WAHANA', 'COOK', '2021-12-23', 1, 'Staff', 3000000, '166-00-0320 267-16', '1', 'P', 3000000),
+(63, 'AJAT', '1974-04-21', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Belum Menikah', 'WAHANA', 'COOK', '2022-05-04', 1, 'Staff', 3000000, '166-00-0320 260-11', '1', 'L', 3000000),
+(64, 'AHMAD SYARIFUDDIN', '1975-04-22', 0, 'KP Sukarame RT/RW 004/002 Kel Langensari Kec ', '1', 'Menikah', 'WAHANA', 'COOK HELPER', '2021-06-01', 2, 'Staff', 3000000, '166-00-0320 273-14', '1', 'L', 3000000),
+(65, 'AULIA JAYANTI', '1975-04-23', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Belum Menikah', 'CAFFE', 'COOK HELPER', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 267-17', '1', 'P', 3000000),
+(66, 'AKBAR', '1993-04-06', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Menikah', 'CAFFE', 'STEWARD', '2022-01-01', 1, 'Partime', 3000000, '166-00-0321 771-13', '1', 'L', 3000000),
+(67, 'FREDY', '1993-04-07', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Belum Menikah', 'CAFFE', 'STEWARD', '2021-12-23', 1, 'Partime', 3000000, '166-00-0320 273-14', '1', 'L', 3000000),
+(68, 'FAREL', '1993-04-08', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'CAFFE', 'COOK', '2022-05-04', 1, 'Partime', 3000000, '166-00-0320 267-17', '1', 'L', 3000000),
+(69, 'ANANG', '1993-04-09', 0, 'KP Sukarame RT/RW 004/002 Kel Langensari Kec ', '1', 'Belum Menikah', 'WAHANA', 'COOK HELPER', '2021-06-01', 2, 'Partime', 3000000, '166-00-0320 260-12', '1', 'L', 3000000),
+(70, 'IKHSAN', '1993-04-10', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Menikah', 'WAHANA', 'COOK HELPER', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 273-15', '1', 'L', 3000000),
+(71, 'BAYU', '1993-04-11', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Belum Menikah', 'WAHANA', 'HOUSE KEEPING', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 267-18', '1', 'L', 3000000),
+(72, 'FAHRI', '1993-04-12', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Menikah', 'RESTO', 'GARDENER', '2021-12-23', 1, 'Partime', 3000000, '166-00-0321 771-14', '1', 'L', 3000000),
+(73, 'WISAD', '1993-04-13', 0, 'BLOCK GEMBUL RT 003/001 KEL.Pangkalanpari KEC', '1', 'Belum Menikah', 'RESTO', 'HOUSE KEEPING', '2022-05-04', 1, 'Partime', 3000000, '166-00-0320 273-15', '1', 'L', 3000000),
+(74, 'ADIT', '1993-04-14', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'RESTO', 'MAINTENANCE', '2021-06-01', 2, 'Partime', 3000000, '166-00-0320 267-18', '1', 'L', 3000000),
+(75, 'REHAN', '1993-04-15', 0, 'KP Sukarame RT/RW 004/002 Kel Langensari Kec ', '1', 'Belum Menikah', 'RESTO', 'MAINTENANCE', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 260-13', '1', 'L', 3000000),
+(76, 'DAVA', '1993-04-16', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Menikah', 'RESTO', 'MAINTENANCE', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 273-16', '1', 'L', 3000000),
+(77, 'RIZKY', '1993-04-17', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Belum Menikah', 'RESTO', 'SECURITY', '2021-12-23', 1, 'Partime', 3000000, '166-00-0320 267-19', '1', 'L', 3000000),
+(78, 'ARDILAH', '1993-04-18', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Menikah', 'RESTO', 'SECURITY', '2022-05-04', 1, 'Partime', 3000000, '166-00-0321 771-15', '1', 'P', 3000000),
+(79, 'REZI', '1993-04-19', 0, 'BLOCK GEMBUL RT 003/001 KEL.Pangkalanpari KEC', '1', 'Belum Menikah', 'RESTO', 'HOUSE KEEPING', '2021-06-01', 2, 'Partime', 3000000, '166-00-0320 273-16', '1', 'L', 3000000),
+(80, 'RAYHAN', '1993-04-20', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'RESTO', 'HOUSE KEEPING', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 267-19', '1', 'L', 3000000),
+(81, 'NASRUL', '1993-04-21', 0, 'KP Sukarame RT/RW 004/002 Kel Langensari Kec ', '1', 'Belum Menikah', 'RESTO', 'HOUSE KEEPING', '2022-01-01', 1, 'Partime', 3000000, '166-00-0320 260-14', '1', 'L', 3000000),
+(82, 'NURDIN', '1993-04-22', 0, 'Dusun 0 RT/RW 013/003 Kel. Jalaksana Kec Jala', '1', 'Menikah', 'RESTO', 'COOK HELPER', '2021-12-23', 1, 'Partime', 3000000, '166-00-0320 273-17', '1', 'L', 3000000),
+(83, 'RUBEN', '1993-04-23', 0, 'KP Pabuaran  RT/RT 005/001 Jatimurni Kec. Pon', '1', 'Belum Menikah', 'RESTO', 'COOK HELPER', '2022-05-04', 1, 'Partime', 3000000, '166-00-0320 267-20', '1', 'L', 3000000),
+(84, 'SABRAN', '1993-04-24', 0, 'KP Pondok Ranggon RT/RW 002/001 Jatimurni Kec', '1', 'Menikah', 'RESTO', 'STEWARD', '2021-06-01', 2, 'Partime', 3000000, '166-00-0321 771-16', '1', 'L', 3000000),
+(85, 'ARIFIN', '1993-04-25', 0, 'BLOCK GEMBUL RT 003/001 KEL.Pangkalanpari KEC', '1', 'Belum Menikah', 'JG PROJECT', 'STEWARD', '2022-01-01', 1, 'Team', 3000000, '166-00-0320 273-17', '1', 'L', 3000000),
+(86, 'MUKI', '1993-04-26', 0, 'LRG PERIGI DARAT NO 323 RT/RW 014/003 Kel. 2 ', '1', 'Menikah', 'JG PROJECT', 'COOK', '2022-01-01', 1, 'Team', 3000000, '166-00-0320 267-20', '1', 'L', 3000000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_laporan`
+-- Struktur dari tabel `tb_laporan`
 --
 
 CREATE TABLE `tb_laporan` (
@@ -356,17 +455,18 @@ CREATE TABLE `tb_laporan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_laporan`
+-- Dumping data untuk tabel `tb_laporan`
 --
 
 INSERT INTO `tb_laporan` (`id`, `id_pengajuan`, `status`, `angsuran_berjalan`, `angsuran_bulanan`) VALUES
 (1, 1, 'Disetujui', 'Tidak', '1500000'),
-(2, 2, 'Disetujui', 'Ya', '333333.33333333');
+(2, 2, 'Disetujui', 'Ya', '333333.33333333'),
+(3, 3, 'Disetujui', 'Ya', '3333333.3333333');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_logs`
+-- Struktur dari tabel `tb_logs`
 --
 
 CREATE TABLE `tb_logs` (
@@ -380,7 +480,7 @@ CREATE TABLE `tb_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_logs`
+-- Dumping data untuk tabel `tb_logs`
 --
 
 INSERT INTO `tb_logs` (`auditID`, `ipaddress`, `user_id`, `module`, `task`, `note`, `logdate`) VALUES
@@ -400,12 +500,26 @@ INSERT INTO `tb_logs` (`auditID`, `ipaddress`, `user_id`, `module`, `task`, `not
 (14, '127.0.0.1', 1, 'pengajuanpinjaman', NULL, 'New Data with ID 1 Has been Inserted !', '2023-09-13 18:51:05'),
 (15, '127.0.0.1', 1, 'karyawan', NULL, 'New Data with ID 2 Has been Inserted !', '2023-09-16 06:28:19'),
 (16, '127.0.0.1', 1, 'pengajuanpinjaman', NULL, 'New Data with ID 1 Has been Inserted !', '2023-09-16 06:28:40'),
-(17, '127.0.0.1', 1, 'pengajuanpinjaman', NULL, 'New Data with ID 2 Has been Inserted !', '2023-09-16 06:44:26');
+(17, '127.0.0.1', 1, 'pengajuanpinjaman', NULL, 'New Data with ID 2 Has been Inserted !', '2023-09-16 06:44:26'),
+(18, '127.0.0.1', 1, 'karyawan', NULL, 'New Data with ID 3 Has been Inserted !', '2023-09-16 12:50:25'),
+(19, '127.0.0.1', 1, 'pengajuanpinjaman', NULL, 'New Data with ID 3 Has been Inserted !', '2023-09-16 21:36:21'),
+(20, '127.0.0.1', 1, 'finance', NULL, 'New Data with ID 3 Has been Inserted !', '2023-09-18 02:11:12'),
+(21, '127.0.0.1', 1, 'manager', NULL, 'New Data with ID 2 Has been Inserted !', '2023-09-18 02:12:10'),
+(22, '127.0.0.1', 1, 'manager', NULL, 'New Data with ID 3 Has been Inserted !', '2023-09-18 02:12:51'),
+(23, '127.0.0.1', 1, 'manager', NULL, 'New Data with ID 4 Has been Inserted !', '2023-09-18 02:13:44'),
+(24, '127.0.0.1', 1, 'manager', NULL, 'Data with ID 3 Has been Updated !', '2023-09-18 02:14:25'),
+(25, '127.0.0.1', 1, 'manager', NULL, 'Data with ID 4 Has been Updated !', '2023-09-18 02:14:40'),
+(26, '127.0.0.1', 1, 'karyawan', NULL, 'Data with ID 1 Has been Updated !', '2023-09-18 06:29:43'),
+(27, '127.0.0.1', 1, 'karyawan', NULL, 'Data with ID 2 Has been Updated !', '2023-09-18 07:14:08'),
+(28, '127.0.0.1', 1, 'karyawan', NULL, 'Data with ID 1 Has been Updated !', '2023-09-18 07:30:33'),
+(29, '127.0.0.1', 1, 'karyawan', NULL, 'Data with ID 2 Has been Updated !', '2023-09-18 07:30:42'),
+(30, '127.0.0.1', 1, 'karyawan', NULL, 'Data with ID 3 Has been Updated !', '2023-09-18 07:30:56'),
+(31, '127.0.0.1', 1, 'finance', NULL, 'New Data with ID 4 Has been Inserted !', '2023-09-18 09:45:53');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_log_status`
+-- Struktur dari tabel `tb_log_status`
 --
 
 CREATE TABLE `tb_log_status` (
@@ -418,7 +532,7 @@ CREATE TABLE `tb_log_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_log_status`
+-- Dumping data untuk tabel `tb_log_status`
 --
 
 INSERT INTO `tb_log_status` (`id`, `id_sku`, `id_mapping`, `status`, `adddate`, `id_user`) VALUES
@@ -429,7 +543,7 @@ INSERT INTO `tb_log_status` (`id`, `id_sku`, `id_mapping`, `status`, `adddate`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_manger`
+-- Struktur dari tabel `tb_manger`
 --
 
 CREATE TABLE `tb_manger` (
@@ -441,16 +555,19 @@ CREATE TABLE `tb_manger` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_manger`
+-- Dumping data untuk tabel `tb_manger`
 --
 
 INSERT INTO `tb_manger` (`id`, `nama`, `email`, `username`, `password`) VALUES
-(1, 'Manager1', 'manager1@mail.com', 'manager1', 'manager1');
+(1, 'Manager1', 'manager1@mail.com', 'manager1', 'manager1'),
+(2, 'rinyanto', 'rinyanto@mail.com', 'riyanto', 'rinyanto'),
+(3, 'Muhammad Ridwansyah', 'Syahmuhammadridwan@gmail.com', 'manager_cibubur', '123456'),
+(4, 'zakaria', 'zakria@mail.com', 'manager_tambun', 'tambun');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_menu`
+-- Struktur dari tabel `tb_menu`
 --
 
 CREATE TABLE `tb_menu` (
@@ -472,7 +589,7 @@ CREATE TABLE `tb_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_menu`
+-- Dumping data untuk tabel `tb_menu`
 --
 
 INSERT INTO `tb_menu` (`menu_id`, `parent_id`, `module`, `url`, `menu_name`, `menu_type`, `role_id`, `deep`, `ordering`, `position`, `menu_icons`, `active`, `access_data`, `allow_guest`, `menu_lang`) VALUES
@@ -490,7 +607,7 @@ INSERT INTO `tb_menu` (`menu_id`, `parent_id`, `module`, `url`, `menu_name`, `me
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_module`
+-- Struktur dari tabel `tb_module`
 --
 
 CREATE TABLE `tb_module` (
@@ -509,7 +626,7 @@ CREATE TABLE `tb_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_module`
+-- Dumping data untuk tabel `tb_module`
 --
 
 INSERT INTO `tb_module` (`module_id`, `module_name`, `module_title`, `module_note`, `module_author`, `module_created`, `module_desc`, `module_db`, `module_db_key`, `module_type`, `module_config`, `module_lang`) VALUES
@@ -529,7 +646,7 @@ INSERT INTO `tb_module` (`module_id`, `module_name`, `module_title`, `module_not
 (53, 'rac', 'RestAPI Client', 'Data', NULL, '2016-11-24 00:57:36', NULL, 'tb_restapi', 'id', 'core', 'eyJzcWxfciVsZWN0oj24oFNFTEVDVCB0Y39yZXN0YXB1L425R3JPTSB0Y39yZXN0YXB1oCosonNxbF9g6GVyZSoIo4BXSEVSRSB0Y39yZXN0YXB1Lp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj24o4w4dGF4bGVfZGo4O4J0Y39yZXN0YXB1o4w4cHJ1bWFyeV9rZXk4O4J1ZCosopdy6WQ4O3t7opZ1ZWxkoj246WQ4LCJhbG3hcyoIonR4XgJ3cgRhcGk4LCJsYWmndWFnZSoIWl0sopxhYpVsoj24SWQ4LCJi6WVgoj2wLCJkZXRh6Ww4OjAsonNvcnRhYpx3oj2wLCJzZWFyYi54OjEsopRvdimsbiFkoj2wLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9LHs4Zp33bGQ4O4JhcG3lciVyo4w4YWx1YXM4O4J0Y39yZXN0YXB1o4w4bGFuZgVhZiU4O3tdLCJsYWJ3bCoIok3Eo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojE4LCJjbimuoj17onZhbG3koj24MSosopR4oj24dGJfdXN3cnM4LCJrZXk4O4J1ZCosopR1cgBsYXk4O4J3bWF1bCJ9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24YXB16iVmo4w4YWx1YXM4O4J0Y39yZXN0YXB1o4w4bGFuZgVhZiU4O3tdLCJsYWJ3bCoIokt3eSosonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oyo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopNyZWF0ZWQ4LCJhbG3hcyoIonR4XgJ3cgRhcGk4LCJsYWmndWFnZSoIWl0sopxhYpVsoj24QgJ3YXR3ZCosonZ1ZXc4OjAsopR3dGF1bCoIMCw4ci9ydGF4bGU4OjAsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjAsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ozo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIoplvZHVsZXM4LCJhbG3hcyoIonR4XgJ3cgRhcGk4LCJsYWmndWFnZSoIWl0sopxhYpVsoj24QWNjZXNzoFRvoD24LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24NCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9XSw4Zp9ybXM4O3t7opZ1ZWxkoj246WQ4LCJhbG3hcyoIonR4XgJ3cgRhcGk4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok3ko4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24MCosonZ1ZXc4OjEsonRmcGU4O4J26WRkZWa4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj2wLCJzbgJ0bG3zdCoIojA4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24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dGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIoplvZHVsZXM4LCJhbG3hcyoIonR4XgJ3cgRhcGk4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIoklvZHVsZXM4LCJpbgJtXidybgVwoj24o4w4cpVxdW3yZWQ4O4owo4w4dp33dyoIMSw4dH3wZSoIonN3bGVjdCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54OjAsonNvcnRs6XN0oj24NCosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4J3eHR3cpmhbCosopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIonR4XilvZHVsZSosopxvbitlcF9rZXk4O4JtbiRlbGVfbpFtZSosopxvbitlcF9iYWxlZSoIoplvZHVsZV906XRsZSosop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4oxo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9XX0=', NULL),
 (90, 'manager', 'Manager', 'Manager', NULL, '2023-09-09 12:06:34', NULL, 'tb_manger', 'id', 'native', 'eyJzcWxfciVsZWN0oj24oFNFTEVDVCB0Y39tYWmnZXouK4BGUk9NoHR4Xilhbpd3c4A4LCJzcWxfdih3cpU4O4o5V0hFUkU5dGJfbWFuZiVyLp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj1udWxsLCJ0YWJsZV9kY4oIonR4Xilhbpd3c4osonBy6Wlhcn3f6iVmoj246WQ4LCJncp3koj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39tYWmnZXo4LCJsYWJ3bCoIok3ko4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoIMCw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24bpFtYSosopFs6WFzoj24dGJfbWFuZiVyo4w4bGF4ZWw4O4JOYWlho4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoIMSw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24ZWlh6Ww4LCJhbG3hcyoIonR4Xilhbpd3c4osopxhYpVsoj24RWlh6Ww4LCJsYWmndWFnZSoIWl0sonN3YXJj6CoIojE4LCJkbgdubG9hZCoIojE4LCJhbG3nb4oIopx3ZnQ4LCJi6WVgoj24MSosopR3dGF1bCoIojE4LCJzbgJ0YWJsZSoIojE4LCJpcp9IZWa4O4owo4w46G3kZGVuoj24MCosonNvcnRs6XN0oj2yLCJg6WR06CoIojEwMCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9LHs4Zp33bGQ4O4JlciVybpFtZSosopFs6WFzoj24dGJfbWFuZiVyo4w4bGF4ZWw4O4JVciVybpFtZSosopxhbpdlYWd3oj1bXSw4ciVhcpN2oj24MSosopRvdimsbiFkoj24MSosopFs6Wduoj24bGVpdCosonZ1ZXc4O4oxo4w4ZGV0YW3soj24MSosonNvcnRhYpx3oj24MSosopZybg13b4oIojA4LCJ26WRkZWa4O4owo4w4ci9ydGx1cgQ4OjMsond1ZHR2oj24MTAwo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIonBhcgNgbgJko4w4YWx1YXM4O4J0Y39tYWmnZXo4LCJsYWJ3bCoIo3BhcgNgbgJko4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoINCw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fV0sopZvcplzoj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39tYWmnZXo4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok3ko4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24o4w4dp33dyoIMSw4dH3wZSoIoph1ZGR3b4osopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4owo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24bpFtYSosopFs6WFzoj24dGJfbWFuZiVyo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JOYWlho4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oxo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24ZWlh6Ww4LCJhbG3hcyoIonR4Xilhbpd3c4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RWlh6Ww4LCJpbgJtXidybgVwoj24o4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojo4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JlciVybpFtZSosopFs6WFzoj24dGJfbWFuZiVyo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JVciVybpFtZSosopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24Myosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIonBhcgNgbgJko4w4YWx1YXM4O4J0Y39tYWmnZXo4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3BhcgNgbgJko4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4o0o4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fVl9', NULL),
 (91, 'finance', 'Finance', 'Finance', NULL, '2023-09-09 12:07:22', NULL, 'tb_finance', 'id', 'native', 'eyJzcWxfciVsZWN0oj24oFNFTEVDVCB0Y39p6WmhbpN3L425R3JPTSB0Y39p6WmhbpN3oCosonNxbF9g6GVyZSoIo4BXSEVSRSB0Y39p6WmhbpN3Lp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj1udWxsLCJ0YWJsZV9kY4oIonR4XiZ1bpFuYiU4LCJwcp3tYXJmXit3eSoIop3ko4w4ZgJ1ZCoIWgs4Zp33bGQ4O4J1ZCosopFs6WFzoj24dGJfZp3uYWmjZSosopxhYpVsoj24SWQ4LCJsYWmndWFnZSoIWl0sonN3YXJj6CoIojE4LCJkbgdubG9hZCoIojE4LCJhbG3nb4oIopx3ZnQ4LCJi6WVgoj24MSosopR3dGF1bCoIojE4LCJzbgJ0YWJsZSoIojE4LCJpcp9IZWa4O4owo4w46G3kZGVuoj24MCosonNvcnRs6XN0oj2wLCJg6WR06CoIojEwMCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9LHs4Zp33bGQ4O4JuYWlho4w4YWx1YXM4O4J0Y39p6WmhbpN3o4w4bGF4ZWw4O4JOYWlho4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoIMSw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24ZWlh6Ww4LCJhbG3hcyoIonR4XiZ1bpFuYiU4LCJsYWJ3bCoIokVtYW3so4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoIM4w4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24dXN3cpmhbWU4LCJhbG3hcyoIonR4XiZ1bpFuYiU4LCJsYWJ3bCoIo3VzZXJuYWl3o4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoIMyw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24cGFzcgdvcpQ4LCJhbG3hcyoIonR4XiZ1bpFuYiU4LCJsYWJ3bCoIo3BhcgNgbgJko4w4bGFuZgVhZiU4O3tdLCJzZWFyYi54O4oxo4w4ZG9gbpxvYWQ4O4oxo4w4YWx1Zia4O4JsZWZ0o4w4dp33dyoIojE4LCJkZXRh6Ww4O4oxo4w4ci9ydGF4bGU4O4oxo4w4ZnJvepVuoj24MCosoph1ZGR3b4oIojA4LCJzbgJ0bG3zdCoINCw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fV0sopZvcplzoj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39p6WmhbpN3o4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JJZCosopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIo4osonZ1ZXc4OjEsonRmcGU4O4J26WRkZWa4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24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', NULL),
-(92, 'karyawan', 'Karyawan', 'Karyawan', NULL, '2023-09-09 12:08:05', NULL, 'tb_karyawan', 'id', 'native', 'eyJ0YWJsZV9kY4oIonR4Xithcn3hdiFuo4w4cHJ1bWFyeV9rZXk4O4J1ZCosopZvcplfYi9sdWluoj2yLCJpbgJtXixheW9ldCoIeyJjbixlbWa4OjosonR1dGx3oj24SWmpbgJtYXN1oEthcn3hdiFuLE3uZp9ybWFz6SBQZWt3cp1hYWa4LCJpbgJtYXQ4O4Jncp3ko4w4ZG3zcGxheSoIophvcp3Ibim0YWw4fSw4cgFsXgN3bGVjdCoIo3NFTEVDVCB0Y39rYXJmYXdhb4aqLFxuRk9STUFUKHR4Xithcn3hdiFuLpdh6p3fcG9rbissoDA1oGFzoG1lbWxh6F9nYW11XGa5R3JPTSB0Y39rYXJmYXdhb4osonNxbF9g6GVyZSoIo3doRVJFoHR4Xithcn3hdiFuLp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj1udWxsLCJncp3koj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SWQ4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MSosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIopmhbWFf6iFyYXdhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmhbWE5SiFyYXdhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oyo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24dGdsXixh6G3yo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VGdsoExh6G3yo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojM4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jlci3ho4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VXN1YSosonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4o0o4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24YWxhbWF0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24QWxhbWF0o4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojU4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jubl90bHBuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24Tp85VGxwb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oio4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24cgRhdHVzXgB3cpm16iF2YWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM5UGVybp3rYWhhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ogo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj246pVu6XNf6pFt6Wmhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok13bp3zoE1hbW3uYWa4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24OCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIopR3cGFydGVtZWm0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RGVwYXJ0ZWl3bnQ4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24OSosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIop1hYpF0YWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JKYWJhdGFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojEwo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24dGdsXiJ3cpdhYnVuZyosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3RnbCBCZXJnYWJlbpc4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTE4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4JsYWlhXiJ36iVy6pE4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JMYWlhoEJ36iVy6pE4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTo4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4JzdGF0dXNf6iFyeWFgYWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM5SiFyeWFgYWa4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTM4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4JnYW11XgBv6i9ro4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RiFq6SBQbitv6yosonZ1ZXc4OjAsopR3dGF1bCoIMCw4ci9ydGF4bGU4OjAsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjAsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oxNCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIopmvXgJ36iVu6Wmno4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24Tp85UpVrZWm1bpc4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTU4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4JrdHA4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGF4ZWw4O4JLdHA4LCJsYWmndWFnZSoIWl0sonN3YXJj6CoIojE4LCJkbgdubG9hZCoIojE4LCJhbG3nb4oIopx3ZnQ4LCJi6WVgoj24MSosopR3dGF1bCoIojE4LCJzbgJ0YWJsZSoIojE4LCJpcp9IZWa4O4owo4w46G3kZGVuoj24MCosonNvcnRs6XN0oj2xNSw4di3kdG54O4oxMDA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj246nVtbGF2Xidh6pk4LCJhbG3hcyoIo4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SnVtbGF2oEdh6pk4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTY4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9XSw4Zp9ybXM4O3t7opZ1ZWxkoj246WQ4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JJZCosopZvcplfZgJvdXA4O4owo4w4cpVxdW3yZWQ4O4o4LCJi6WVgoj2xLCJ0eXB3oj246G3kZGVuo4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojE4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JqZWm1cl9qYWl1bpFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SpVu6XM5SpFt6Wmhb4osopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4o4LCJi6WVgoj2xLCJ0eXB3oj24ciVsZWN0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojo4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24ZGF0YWx1cgQ4LCJsbi9rdXBfcXV3cnk4O4JLYXJ0dSBLYXJmYXdhbj1LYXJ0dSBLYXJmYXdhbnxCUEtCoElvdG9yOkJQS0o5TW90bgJ8Q3BLQ4BNbiJ1bD1CUEtCoElvYp3so4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JuYWlhXithcpFgYWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JOYWlhoEthcpFgYWa4LCJpbgJtXidybgVwoj24MCosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4ozo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24dGdsXixh6G3yo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VGdsoExh6G3yo4w4Zp9ybV9ncp9lcCoIojA4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHRfZGF0ZSosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4o0o4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24dXN1YSosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3Vz6WE4LCJpbgJtXidybgVwoj24MCosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4olo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24YWxhbWF0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24QWxhbWF0o4w4Zp9ybV9ncp9lcCoIojA4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24N4osopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIopmvXgRscGa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JObyBUbHBuo4w4Zp9ybV9ncp9lcCoIojA4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24Nyosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIonN0YXRlcl9wZXJu6Wth6GFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24UgRhdHVzoFB3cpm16iF2YWa4LCJpbgJtXidybgVwoj24MCosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24cpFk6W84LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24OCosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4JkYXRhbG3zdCosopxvbitlcF9xdWVyeSoIokl3bp3rYW5ITWVu6Wth6HxCZWxlbSBNZWm16iF2OkJ3bHVtoEl3bp3rYW54LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIopR3cGFydGVtZWm0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RGVwYXJ0ZWl3bnQ4LCJpbgJtXidybgVwoj24MSosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4omo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj246pF4YXRhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok1hYpF0YWa4LCJpbgJtXidybgVwoj24MSosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oxMCosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIonRnbF94ZXJnYWJlbpc4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JUZiw5QpVyZiF4dWmno4w4Zp9ybV9ncp9lcCoIojE4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHRfZGF0ZSosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oxMSosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIopxhbWFfYpVrZXJqYSosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokxhbWE5QpVrZXJqYSosopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojEyo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24cgRhdHVzXithcn3hdiFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24UgRhdHVzoEthcn3hdiFuo4w4Zp9ybV9ncp9lcCoIojE4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24MTM4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JnYW11XgBv6i9ro4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RiFq6SBQbitv6yosopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojE0o4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24bp9fcpVrZWm1bpc4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JObyBSZWt3bp3uZyosopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojElo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj246gRwo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SgRwo4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oxNSosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fXldfQ==', NULL);
+(92, 'karyawan', 'Karyawan', 'Karyawan', NULL, '2023-09-09 12:08:05', NULL, 'tb_karyawan', 'id', 'native', 'eyJ0YWJsZV9kY4oIonR4Xithcn3hdiFuo4w4cHJ1bWFyeV9rZXk4O4J1ZCosopZvcplfYi9sdWluoj2yLCJpbgJtXixheW9ldCoIeyJjbixlbWa4OjosonR1dGx3oj24SWmpbgJtYXN1oEthcn3hdiFuLE3uZp9ybWFz6SBQZWt3cp1hYWa4LCJpbgJtYXQ4O4Jncp3ko4w4ZG3zcGxheSoIophvcp3Ibim0YWw4fSw4cgFsXgN3bGVjdCoIo3NFTEVDVCB0Y39rYXJmYXdhb4aqLFxuRk9STUFUKHR4Xithcn3hdiFuLpdh6p3fcG9rbissoDA1oGFzoG1lbWxh6F9nYW11XGa5R3JPTSB0Y39rYXJmYXdhb4osonNxbF9g6GVyZSoIo3doRVJFoHR4Xithcn3hdiFuLp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj1udWxsLCJncp3koj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SWQ4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MSosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIopmhbWFf6iFyYXdhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmhbWE5SiFyYXdhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oyo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24dGdsXixh6G3yo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VGdsoExh6G3yo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojY4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jlci3ho4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VXN1YSosonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ogo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24YWxhbWF0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24QWxhbWF0o4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIoj54LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jubl90bHBuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24Tp85VGxwb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4omo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24cgRhdHVzXgB3cpm16iF2YWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM5UGVybp3rYWhhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oxMCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIopR3cGFydGVtZWm0o4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24RGVwYXJ0ZWl3bnQ4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTE4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4JqYWJhdGFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SpF4YXRhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oxM4osopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIonRnbF94ZXJnYWJlbpc4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JUZiw5QpVyZiF4dWmno4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojEzo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24bGFtYV94ZWt3cp1ho4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24TGFtYSBCZWt3cp1ho4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojE0o4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24cgRhdHVzXithcn3hdiFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24UgRhdHVzoEthcn3hdiFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojElo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj24ZiFq6V9wbitv6yosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokdh6pk5UG9rbis4LCJi6WVgoj2wLCJkZXRh6Ww4OjAsonNvcnRhYpx3oj2wLCJzZWFyYi54OjEsopRvdimsbiFkoj2wLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTY4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jubl9yZWt3bp3uZyosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmvoFJ36iVu6Wmno4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojEao4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fSx7opZ1ZWxkoj246gRwo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SgRwo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojU4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4LCJ0eXB3oj24dGVadCJ9LHs4Zp33bGQ4O4Jq6yosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok13bp3zoEt3bGFt6Wa4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24NCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4osonRmcGU4O4J0ZXh0on0seyJp6WVsZCoIop1lbWxh6F9nYW11o4w4YWx1YXM4O4o4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok1lbWxh6CBHYW11o4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojEgo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24o4w4dH3wZSoIonR3eHQ4fV0sopZvcplzoj1beyJp6WVsZCoIop3ko4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SWQ4LCJpbgJtXidybgVwoj24MCosonJ3cXV1cpVkoj24o4w4dp33dyoIMSw4dH3wZSoIoph1ZGR3b4osopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oxo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24bpFtYV9rYXJhdiFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24TpFtYSBLYXJhdiFuo4w4Zp9ybV9ncp9lcCoIojA4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSos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6Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24bp9fdGxwb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmvoFRscGa4LCJpbgJtXidybgVwoj24MCosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4ogo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24cgRhdHVzXgB3cpm16iF2YWa4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM5UGVybp3rYWhhb4osopZvcplfZgJvdXA4O4owo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4JyYWR1byosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4oao4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIopRhdGFs6XN0o4w4bG9v6gVwXgFlZXJmoj24TWVu6Wth6D1NZWm16iF2fEJ3bHVtoEl3bp3rYW5IQpVsdW05TWVu6Wth6CosopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24ZGVwYXJ0ZWl3bnQ4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JEZXBhcnR3bWVudCosopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojk4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JqYWJhdGFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SpF4YXRhb4osopZvcplfZgJvdXA4O4oxo4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojEwo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj24dGdsXiJ3cpdhYnVuZyosopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3RnbCBCZXJnYWJlbpc4LCJpbgJtXidybgVwoj24MSosonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadF9kYXR3o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojExo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3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O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24MTU4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4JrdHA4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JLdHA4LCJpbgJtXidybgVwoj24o4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojEio4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj246ps4LCJhbG3hcyoIonR4Xithcn3hdiFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JK6yosopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHRhcpVho4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojEgo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fVl9', '{\"title\":{\"id\":\"\"},\"note\":{\"id\":\"\"}}');
 INSERT INTO `tb_module` (`module_id`, `module_name`, `module_title`, `module_note`, `module_author`, `module_created`, `module_desc`, `module_db`, `module_db_key`, `module_type`, `module_config`, `module_lang`) VALUES
 (93, 'pengajuanpinjaman', 'Pengajuan Pinjaman', 'Pengajuan Pinjaman', NULL, '2023-09-09 12:11:18', NULL, 'tb_pengajuan', 'id', 'native', 'eyJ0YWJsZV9kY4oIonR4XgB3bpdh6nVhb4osonBy6Wlhcn3f6iVmoj246WQ4LCJzcWxfciVsZWN0oj24U0VMRUNUoFxudGJfcGVuZiFqdWFuL42sXGmGTlJNQVQ2dGJfcGVuZiFqdWFuLp1lbWxh6F9w6WmqYWlhb4wwKSBhcyB0bgRhbF9w6WmqYWlhb4xcbnR4Xithcn3hdiFuLpmhbWFf6iFyYXdhb3xuoEZST005dGJfcGVuZiFqdWFuoFxubGVpdCBqbi3uoHR4Xithcn3hdiFuoG9uoHR4XgB3bpdh6nVhb4m1ZF9rYXJmYXdhb4A9oHR4Xithcn3hdiFuLp3ko4w4cgFsXgd2ZXJ3oj24V0hFUkU5dGJfcGVuZiFqdWFuLp3koE3ToEmPVCBOVUxMo4w4cgFsXidybgVwoj1udWxsLCJpbgJtcyoIWgs4Zp33bGQ4O4J1ZCosopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JJZCosopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIo4osonZ1ZXc4OjEsonRmcGU4O4J26WRkZWa4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24MSosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIop3kXithcn3hdiFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok3koEthcn3hdiFuo4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24ciVsZWN0o4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojU4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24ZXh0ZXJuYWw4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4J0Y39rYXJmYXdhb4osopxvbitlcF9rZXk4O4J1ZCosopxvbitlcF9iYWxlZSoIopmhbWFf6iFyYXdhb4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9LHs4Zp33bGQ4O4J0ZixfcGVuZiFqdWFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3RnbCBQZWmnYW1lYWa4LCJpbgJtXidybgVwoj24o4w4cpVxdW3yZWQ4O4JyZXFl6XJ3ZCosonZ1ZXc4OjEsonRmcGU4O4J0ZXh0XiRhdGU4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24N4osopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIopFuZgNlcpFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokFuZgNlcpFuo4w4Zp9ybV9ncp9lcCoIo4osonJ3cXV1cpVkoj24cpVxdW3yZWQ4LCJi6WVgoj2xLCJ0eXB3oj24dGVadCosopFkZCoIMSw4ci3IZSoIojA4LCJ3ZG30oj2xLCJzZWFyYi54O4oxo4w4ci9ydGx1cgQ4O4ogo4w4bG3t6XR3ZCoIo4osop9wdG3vb4oIeyJvcHRfdH3wZSoIo4osopxvbitlcF9xdWVyeSoIo4osopxvbitlcF90YWJsZSoIo4osopxvbitlcF9rZXk4O4o4LCJsbi9rdXBfdpFsdWU4O4o4LCJ1cl9kZXB3bpR3bpNmoj24o4w4ciVsZWN0XillbHR1cGx3oj24MCosop3tYWd3XillbHR1cGx3oj24MCosopxvbitlcF9kZXB3bpR3bpNmXit3eSoIo4osonBhdGhfdG9fdXBsbiFkoj24o4w4cpVz6X13Xgd1ZHR2oj24o4w4cpVz6X13Xih36Wd2dCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fSx7opZ1ZWxkoj246nVtbGF2XgB1bp1hbWFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok1lbWxh6CBQ6WmqYWlhb4osopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHQ4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24OCosopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIonN0YXRlcyosopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM4LCJpbgJtXidybgVwoj24o4w4cpVxdW3yZWQ4O4o4LCJi6WVgoj2xLCJ0eXB3oj24dGVadGFyZWE4LCJhZGQ4OjEsonN1epU4O4owo4w4ZWR1dCoIMSw4ciVhcpN2oj24MSosonNvcnRs6XN0oj24M4osopx1bW30ZWQ4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonJ3ci3IZV9g6WR06CoIo4osonJ3ci3IZV92ZW3n6HQ4O4o4LCJlcGxvYWRfdH3wZSoIo4osonRvbix06XA4O4o4LCJhdHRy6WJldGU4O4o4LCJ3eHR3bpRfYixhcgM4O4o4fX0seyJp6WVsZCoIop13bp3zXi1hbW3uYWa4LCJhbG3hcyoIonR4XgB3bpdh6nVhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SpVu6XM5SpFt6Wmhb4osopZvcplfZgJvdXA4O4o4LCJyZXFl6XJ3ZCoIonJ3cXV1cpVko4w4dp33dyoIMSw4dH3wZSoIonR3eHRhcpVho4w4YWRkoj2xLCJz6X13oj24MCosopVk6XQ4OjEsonN3YXJj6CoIojE4LCJzbgJ0bG3zdCoIojk4LCJs6Wl1dGVkoj24o4w4bgB06W9uoj17op9wdF90eXB3oj24o4w4bG9v6gVwXgFlZXJmoj24o4w4bG9v6gVwXgRhYpx3oj24o4w4bG9v6gVwXit3eSoIo4osopxvbitlcF9iYWxlZSoIo4osop3zXiR3cGVuZGVuYgk4O4o4LCJzZWx3YgRfbXVsdG3wbGU4O4owo4w46WlhZiVfbXVsdG3wbGU4O4owo4w4bG9v6gVwXiR3cGVuZGVuYg3f6iVmoj24o4w4cGF06F90bl9lcGxvYWQ4O4o4LCJyZXN1epVfdi3kdG54O4o4LCJyZXN1epVf6GV1Zih0oj24o4w4dXBsbiFkXgRmcGU4O4o4LCJ0bi9sdG3woj24o4w4YXR0cp34dXR3oj24o4w4ZXh0ZWmkXiNsYXNzoj24onl9XSw4ZgJ1ZCoIWgs4Zp33bGQ4O4J1ZCosopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JJZCosonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oxo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopmhbWFf6iFyYXdhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmhbWE5SiFyYXdhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oyo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIonRnbF9wZWmnYW1lYWa4LCJhbG3hcyoIonR4XgB3bpdh6nVhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VGdsoFB3bpdh6nVhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ozo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopFuZgNlcpFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokFuZgNlcpFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojQ4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj246nVtbGF2XgB1bp1hbWFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok1lbWxh6CBQ6WmqYWlhb4osonZ1ZXc4OjAsopR3dGF1bCoIMCw4ci9ydGF4bGU4OjAsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjAsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4olo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIonN0YXRlcyosopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM4LCJi6WVgoj2wLCJkZXRh6Ww4OjAsonNvcnRhYpx3oj2wLCJzZWFyYi54OjEsopRvdimsbiFkoj2wLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24NSosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9LHs4Zp33bGQ4O4J0bgRhbF9w6WmqYWlhb4osopFs6WFzoj24o4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JUbgRhbCBQ6WmqYWlhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4olo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIop3kXithcn3hdiFuo4w4YWx1YXM4O4J0Y39wZWmnYW1lYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok3koEthcn3hdiFuo4w4dp33dyoIMCw4ZGV0YW3soj2wLCJzbgJ0YWJsZSoIMCw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMCw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojY4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj246pVu6XNf6pFt6Wmhb4osopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JKZWm1cyBKYWl1bpFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojY4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fVl9', NULL),
 (94, 'laporan', 'Laporan', 'Laporan', NULL, '2023-09-09 12:17:36', NULL, 'tb_laporan', 'id', 'native', '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opFkZCoIojE4LCJ3ZG30oj24MSosonN3YXJj6CoIojE4LCJz6X13oj24cgBhbjEyo4w4ci9ydGx1cgQ4OjQsopZvcplfZgJvdXA4O4o4LCJvcHR1bia4Ons4bgB0XgRmcGU4O4o4LCJsbi9rdXBfcXV3cnk4O4o4LCJsbi9rdXBfdGF4bGU4O4o4LCJsbi9rdXBf6iVmoj24o4w4bG9v6gVwXgZhbHV3oj24o4w46XNfZGVwZWmkZWmjeSoIo4osonN3bGVjdF9tdWx06XBsZSoIojA4LCJ1bWFnZV9tdWx06XBsZSoIojA4LCJsbi9rdXBfZGVwZWmkZWmjeV9rZXk4O4o4LCJwYXR2XgRvXgVwbG9hZCoIo4osonVwbG9hZF90eXB3oj24o4w4dG9vbHR1cCoIo4osopF0dHJ1YnV0ZSoIo4osopVadGVuZF9jbGFzcyoIo4J9fV0sopdy6WQ4O3t7opZ1ZWxkoj246WQ4LCJhbG3hcyoIonR4XixhcG9yYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIok3ko4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojE4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24bp9fcGVuZiFqdWFuo4w4YWx1YXM4O4o4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmvoFB3bpdh6nVhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oyo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopFuZgNlcpFuXiJ3cp1hbGFuo4w4YWx1YXM4O4J0Y39sYXBvcpFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JBbpdzdXJhb4BCZXJqYWxhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4oio4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopmhbWFf6iFyYXdhb4osopFs6WFzoj24dGJf6iFyeWFgYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokmhbWE5SiFyYXdhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ozo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIopFuZgNlcpFuXiJlbGFuYWa4LCJhbG3hcyoIonR4XixhcG9yYWa4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokFuZgNlcpFuoEJlbGFuYWa4LCJi6WVgoj2wLCJkZXRh6Ww4OjAsonNvcnRhYpx3oj2wLCJzZWFyYi54OjEsopRvdimsbiFkoj2wLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTo4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24cgRhdHVzXithcn3hdiFuo4w4YWx1YXM4O4J0Y39rYXJmYXdhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24UgRhdHVzoEthcn3hdiFuo4w4dp33dyoIMCw4ZGV0YW3soj2wLCJzbgJ0YWJsZSoIMCw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMCw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojEzo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24on0seyJp6WVsZCoIonRhbpdnYWxfcGVuZiFqdWFuo4w4YWx1YXM4O4o4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIo3RhbpdnYWw5UGVuZiFqdWFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojQ4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24YWmncgVyYWa4LCJhbG3hcyoIonR4XgB3bpdh6nVhb4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24SpFuZithoFdh6gRlo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojU4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24dG90YWxfcG3u6pFtYWa4LCJhbG3hcyoIo4osopxhbpdlYWd3oj17op3koj24on0sopxhYpVsoj24VG90YWw5UG3u6pFtYWa4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24OCosopNvbpa4Ons4dpFs6WQ4O4owo4w4ZGo4O4o4LCJrZXk4O4o4LCJk6XNwbGFmoj24on0sopZvcplhdF9hcyoIo4osopZvcplhdF9iYWxlZSoIo4J9LHs4Zp33bGQ4O4JnYW11XgBv6i9ro4w4YWx1YXM4O4o4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokdh6pk5UG9rbis4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTA4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24cgRhdHVzo4w4YWx1YXM4O4J0Y39sYXBvcpFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JTdGF0dXM4LCJi6WVgoj2xLCJkZXRh6Ww4OjEsonNvcnRhYpx3oj2xLCJzZWFyYi54OjEsopRvdimsbiFkoj2xLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTE4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj246pVu6XNf6pFt6Wmhb4osopFs6WFzoj24dGJfcGVuZiFqdWFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JKYWl1bpFuo4w4dp33dyoIMSw4ZGV0YW3soj2xLCJzbgJ0YWJsZSoIMSw4ciVhcpN2oj2xLCJkbgdubG9hZCoIMSw4ZnJvepVuoj2xLCJs6Wl1dGVkoj24o4w4di3kdG54O4oxMDA4LCJhbG3nb4oIopx3ZnQ4LCJzbgJ0bG3zdCoIojk4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj246WRfcGVuZiFqdWFuo4w4YWx1YXM4O4J0Y39sYXBvcpFuo4w4bGFuZgVhZiU4Ons46WQ4O4o4fSw4bGF4ZWw4O4JJZCBQZWmnYW1lYWa4LCJi6WVgoj2wLCJkZXRh6Ww4OjAsonNvcnRhYpx3oj2wLCJzZWFyYi54OjEsopRvdimsbiFkoj2wLCJpcp9IZWa4OjEsopx1bW30ZWQ4O4o4LCJg6WR06CoIojEwMCosopFs6Wduoj24bGVpdCosonNvcnRs6XN0oj24MTQ4LCJjbimuoj17onZhbG3koj24MCosopR4oj24o4w46iVmoj24o4w4ZG3zcGxheSoIo4J9LCJpbgJtYXRfYXM4O4o4LCJpbgJtYXRfdpFsdWU4O4o4fSx7opZ1ZWxkoj24YWmncgVyYWmfcGVyXiJlbGFuo4w4YWx1YXM4O4o4LCJsYWmndWFnZSoIeyJ1ZCoIo4J9LCJsYWJ3bCoIokFuZgNlcpFuoFB3c4BCdWxhb4osonZ1ZXc4OjEsopR3dGF1bCoIMSw4ci9ydGF4bGU4OjEsonN3YXJj6CoIMSw4ZG9gbpxvYWQ4OjEsopZybg13b4oIMSw4bG3t6XR3ZCoIo4osond1ZHR2oj24MTAwo4w4YWx1Zia4O4JsZWZ0o4w4ci9ydGx1cgQ4O4ogo4w4Yi9ub4oIeyJiYWx1ZCoIojA4LCJkY4oIo4osopt3eSoIo4osopR1cgBsYXk4O4o4fSw4Zp9ybWF0XiFzoj24o4w4Zp9ybWF0XgZhbHV3oj24onldfQ==', NULL),
@@ -539,7 +656,7 @@ INSERT INTO `tb_module` (`module_id`, `module_name`, `module_title`, `module_not
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_notification`
+-- Struktur dari tabel `tb_notification`
 --
 
 CREATE TABLE `tb_notification` (
@@ -557,7 +674,7 @@ CREATE TABLE `tb_notification` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pages`
+-- Struktur dari tabel `tb_pages`
 --
 
 CREATE TABLE `tb_pages` (
@@ -588,7 +705,7 @@ CREATE TABLE `tb_pages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_pages`
+-- Dumping data untuk tabel `tb_pages`
 --
 
 INSERT INTO `tb_pages` (`pageID`, `cid`, `title`, `alias`, `sinopsis`, `note`, `filename`, `headline`, `status`, `access`, `allow_guest`, `template`, `metakey`, `metadesc`, `default`, `pagetype`, `labels`, `views`, `userid`, `thumbnail`, `cover`, `image`, `updated`, `created`) VALUES
@@ -605,7 +722,7 @@ INSERT INTO `tb_pages` (`pageID`, `cid`, `title`, `alias`, `sinopsis`, `note`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pengajuan`
+-- Struktur dari tabel `tb_pengajuan`
 --
 
 CREATE TABLE `tb_pengajuan` (
@@ -619,17 +736,18 @@ CREATE TABLE `tb_pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_pengajuan`
+-- Dumping data untuk tabel `tb_pengajuan`
 --
 
 INSERT INTO `tb_pengajuan` (`id`, `id_karyawan`, `tgl_pengajuan`, `angsuran`, `jumlah_pinjaman`, `status`, `jenis_jaminan`) VALUES
 (1, 2, '2023-09-16', 10, 15000000, NULL, 'BPKB Mobil'),
-(2, 1, '2023-09-16', 15, 5000000, NULL, 'BPKB Motor');
+(2, 1, '2023-09-16', 15, 5000000, NULL, 'BPKB Motor'),
+(3, 1, '2023-09-19', 15, 50000000, NULL, 'BPKB Motor');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_restapi`
+-- Struktur dari tabel `tb_restapi`
 --
 
 CREATE TABLE `tb_restapi` (
@@ -641,7 +759,7 @@ CREATE TABLE `tb_restapi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_restapi`
+-- Dumping data untuk tabel `tb_restapi`
 --
 
 INSERT INTO `tb_restapi` (`id`, `apiuser`, `apikey`, `created`, `modules`) VALUES
@@ -650,7 +768,7 @@ INSERT INTO `tb_restapi` (`id`, `apiuser`, `apikey`, `created`, `modules`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_token`
+-- Struktur dari tabel `tb_token`
 --
 
 CREATE TABLE `tb_token` (
@@ -664,7 +782,7 @@ CREATE TABLE `tb_token` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_users`
+-- Struktur dari tabel `tb_users`
 --
 
 CREATE TABLE `tb_users` (
@@ -698,21 +816,34 @@ CREATE TABLE `tb_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tb_users`
+-- Dumping data untuk tabel `tb_users`
 --
 
 INSERT INTO `tb_users` (`id`, `group_id`, `username`, `password`, `email`, `first_name`, `last_name`, `birth_of_day`, `address_1`, `address_2`, `state`, `city`, `phone`, `country`, `avatar`, `active`, `login_attempt`, `last_login`, `created_at`, `updated_at`, `reminder`, `activation`, `remember_token`, `last_activity`, `config`, `id_karyawan`, `auth_token`) VALUES
-(1, 1, 'superadmin', '$2y$10$ty.TpWnEjBOk1hoI3M0WIOnyVvrjcyLZ4/7LE9fnBOVRtc4cZekkW', 'superadmin@mail.com', 'Root', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.jpg', 1, 12, '2023-09-16 06:12:34', '2014-03-12 09:18:46', '2022-11-16 22:04:47', 'SNLyM4Smv12Ck8jyopZJMfrypTbEDtVhGT5PMRzxs', NULL, 'CyYwcr61rL6H7yho0wN80dfADAIo3lBhLTf5jenXTUWgXe8vL95DV7TxMpel', 1485431605, NULL, NULL, NULL),
+(1, 1, 'superadmin', '$2y$10$ty.TpWnEjBOk1hoI3M0WIOnyVvrjcyLZ4/7LE9fnBOVRtc4cZekkW', 'superadmin@mail.com', 'Ridwan', 'Syah', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1.jpeg', 1, 12, '2023-09-18 08:34:29', '2014-03-12 09:18:46', '2023-09-18 01:13:19', 'SNLyM4Smv12Ck8jyopZJMfrypTbEDtVhGT5PMRzxs', NULL, 'qqWrKDMhDKBt4GP0OFqcGqMf9x45NGEHYA7vO2PhCq7wxGEMf30OtxassagN', 1485431605, NULL, NULL, NULL),
 (25, 2, 'admin1', '$2y$10$26aUvpKwul1BsJjTM4jdF.3IZqQaY6ZU/CCWhHagHO9A17kcki/vm', 'admin@mail.com', 'Admin', 'Bambang', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '2023-09-09 18:59:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 8, 'finance', '$2y$10$5ZvD1csYXG8H3UDaFe/rUe6ZtHWHWb1oMqjUzXxkDScXgu3GUpDz2', 'finance@mail.com', 'Finance 1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-09 19:29:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 9, 'manager1', '$2y$10$tH15ITeqBJ1Qpyn5ahc0L.9O429tIUZ44sh0yELy8TQ1C8PC5Ff7q', 'manager1@mail.com', 'Manager1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-09 19:33:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(26, 8, 'finance', '$2y$10$5ZvD1csYXG8H3UDaFe/rUe6ZtHWHWb1oMqjUzXxkDScXgu3GUpDz2', 'finance@mail.com', 'Finance 1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2023-09-16 19:11:21', '2023-09-09 19:29:35', NULL, NULL, NULL, 'p9ztJotLRnKNsmA34Q0JPG7wogXyvDzWniDII5nULfdWG4xila3bxj0vHUWM', NULL, NULL, NULL, NULL),
+(27, 9, 'manager1', '$2y$10$tH15ITeqBJ1Qpyn5ahc0L.9O429tIUZ44sh0yELy8TQ1C8PC5Ff7q', 'manager1@mail.com', 'Manager1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '2023-09-16 19:13:36', '2023-09-09 19:33:23', NULL, NULL, NULL, 'AQd4hq8kbGhHEnlzcuOHEcGmC2eBhqMrbQb2zJNBdss0fhGmkSJ1Y4pxBO1I', NULL, NULL, NULL, NULL),
+(28, 8, 'finance_kuningan', '$2y$10$OLFBg7c8J0DMSwvphI9We.qR.llDZer37qAX5Z1UV0eNKDFzWGNNG', 'malas@mail.com', 'malasari', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:11:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 9, 'riyanto', '$2y$10$AgHI46sNRXCJJvoMvjsFUu7L8RjJYoR6TO6SvXoKeZtbnfPmG8NzG', 'rinyanto@mail.com', 'rinyanto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:12:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 9, 'finance_cibubur', '$2y$10$2PUwpUpaUhOkn.jDP5FQ/esnvc8.qzWSdZfo4Iz1OVfQU/PxfzsAa', 'Syahmuhammadridwan@gmail.com', 'Muhammad Ridwansyah', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:12:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 9, 'finan_tambun', '$2y$10$DrRik5O9nNwKxf9G/4.05eJ8Mp3Jvlh31P6zbM5AIPJFqB/OHkm3K', 'zakria@mail.com', 'zakaria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:13:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 9, 'manager_cibubur', '$2y$10$yZbikCj8WPLIHE9BDFrvVu0rn7L8pTryWD./61Nk/MyZuiuWTgkxG', 'Syahmuhammadridwan@gmail.com', 'Muhammad Ridwansyah', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:14:25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 9, 'manager_tambun', '$2y$10$uK2U4VskyOvHda/HLIFl6Ot9gnNpTGUr6kTQJqv8Ppku4vmzZwrui', 'zakria@mail.com', 'zakaria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-18 02:14:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 8, 'diki_finance Tambun', '$2y$10$yt2QpF.vLxkUkZqve2Bn2ueujtsoetWYQR3Rb8r177ykM5CIHI/fu', 'diki@mail.com', 'Diki', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, '2023-09-17 21:45:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `personal_access_tokens`
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -720,254 +851,260 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `tb_categories`
+-- Indeks untuk tabel `tb_categories`
 --
 ALTER TABLE `tb_categories`
   ADD PRIMARY KEY (`cid`);
 
 --
--- Indexes for table `tb_comments`
+-- Indeks untuk tabel `tb_comments`
 --
 ALTER TABLE `tb_comments`
   ADD PRIMARY KEY (`commentID`);
 
 --
--- Indexes for table `tb_data_set`
+-- Indeks untuk tabel `tb_data_set`
 --
 ALTER TABLE `tb_data_set`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_finance`
+-- Indeks untuk tabel `tb_finance`
 --
 ALTER TABLE `tb_finance`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_forms`
+-- Indeks untuk tabel `tb_forms`
 --
 ALTER TABLE `tb_forms`
   ADD PRIMARY KEY (`formID`);
 
 --
--- Indexes for table `tb_groups`
+-- Indeks untuk tabel `tb_groups`
 --
 ALTER TABLE `tb_groups`
   ADD PRIMARY KEY (`group_id`);
 
 --
--- Indexes for table `tb_groups_access`
+-- Indeks untuk tabel `tb_groups_access`
 --
 ALTER TABLE `tb_groups_access`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_karyawan`
+-- Indeks untuk tabel `tb_karyawan`
 --
 ALTER TABLE `tb_karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_laporan`
+-- Indeks untuk tabel `tb_laporan`
 --
 ALTER TABLE `tb_laporan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_logs`
+-- Indeks untuk tabel `tb_logs`
 --
 ALTER TABLE `tb_logs`
   ADD PRIMARY KEY (`auditID`);
 
 --
--- Indexes for table `tb_log_status`
+-- Indeks untuk tabel `tb_log_status`
 --
 ALTER TABLE `tb_log_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_manger`
+-- Indeks untuk tabel `tb_manger`
 --
 ALTER TABLE `tb_manger`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_menu`
+-- Indeks untuk tabel `tb_menu`
 --
 ALTER TABLE `tb_menu`
   ADD PRIMARY KEY (`menu_id`);
 
 --
--- Indexes for table `tb_module`
+-- Indeks untuk tabel `tb_module`
 --
 ALTER TABLE `tb_module`
   ADD PRIMARY KEY (`module_id`);
 
 --
--- Indexes for table `tb_notification`
+-- Indeks untuk tabel `tb_notification`
 --
 ALTER TABLE `tb_notification`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_pages`
+-- Indeks untuk tabel `tb_pages`
 --
 ALTER TABLE `tb_pages`
   ADD PRIMARY KEY (`pageID`);
 
 --
--- Indexes for table `tb_pengajuan`
+-- Indeks untuk tabel `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_restapi`
+-- Indeks untuk tabel `tb_restapi`
 --
 ALTER TABLE `tb_restapi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_token`
+-- Indeks untuk tabel `tb_token`
 --
 ALTER TABLE `tb_token`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_users`
+-- Indeks untuk tabel `tb_users`
 --
 ALTER TABLE `tb_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `tb_categories`
+-- AUTO_INCREMENT untuk tabel `tb_categories`
 --
 ALTER TABLE `tb_categories`
   MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_comments`
+-- AUTO_INCREMENT untuk tabel `tb_comments`
 --
 ALTER TABLE `tb_comments`
   MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tb_data_set`
+-- AUTO_INCREMENT untuk tabel `tb_data_set`
 --
 ALTER TABLE `tb_data_set`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tb_finance`
+-- AUTO_INCREMENT untuk tabel `tb_finance`
 --
 ALTER TABLE `tb_finance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_forms`
+-- AUTO_INCREMENT untuk tabel `tb_forms`
 --
 ALTER TABLE `tb_forms`
   MODIFY `formID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_groups`
+-- AUTO_INCREMENT untuk tabel `tb_groups`
 --
 ALTER TABLE `tb_groups`
   MODIFY `group_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tb_groups_access`
+-- AUTO_INCREMENT untuk tabel `tb_groups_access`
 --
 ALTER TABLE `tb_groups_access`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=869;
 
 --
--- AUTO_INCREMENT for table `tb_karyawan`
+-- AUTO_INCREMENT untuk tabel `tb_karyawan`
 --
 ALTER TABLE `tb_karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `tb_laporan`
+-- AUTO_INCREMENT untuk tabel `tb_laporan`
 --
 ALTER TABLE `tb_laporan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_logs`
+-- AUTO_INCREMENT untuk tabel `tb_logs`
 --
 ALTER TABLE `tb_logs`
-  MODIFY `auditID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `auditID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `tb_log_status`
+-- AUTO_INCREMENT untuk tabel `tb_log_status`
 --
 ALTER TABLE `tb_log_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_manger`
+-- AUTO_INCREMENT untuk tabel `tb_manger`
 --
 ALTER TABLE `tb_manger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_menu`
+-- AUTO_INCREMENT untuk tabel `tb_menu`
 --
 ALTER TABLE `tb_menu`
   MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `tb_module`
+-- AUTO_INCREMENT untuk tabel `tb_module`
 --
 ALTER TABLE `tb_module`
   MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
--- AUTO_INCREMENT for table `tb_notification`
+-- AUTO_INCREMENT untuk tabel `tb_notification`
 --
 ALTER TABLE `tb_notification`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_pages`
+-- AUTO_INCREMENT untuk tabel `tb_pages`
 --
 ALTER TABLE `tb_pages`
   MODIFY `pageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `tb_pengajuan`
+-- AUTO_INCREMENT untuk tabel `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_restapi`
+-- AUTO_INCREMENT untuk tabel `tb_restapi`
 --
 ALTER TABLE `tb_restapi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_token`
+-- AUTO_INCREMENT untuk tabel `tb_token`
 --
 ALTER TABLE `tb_token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_users`
+-- AUTO_INCREMENT untuk tabel `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
